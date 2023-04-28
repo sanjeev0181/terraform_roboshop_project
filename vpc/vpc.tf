@@ -98,7 +98,7 @@ resource "aws_nat_gateway" "example" {
 #https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association
 
 resource "aws_route_table_association" "public" {
-  subnet_id      = aws_subnet.main.id
+  subnet_id      = aws_subnet.public.id
   route_table_id = aws_route_table.public-rt.id
 }
 
