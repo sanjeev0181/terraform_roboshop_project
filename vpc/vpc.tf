@@ -50,7 +50,7 @@ resource "aws_route_table" "public-rt" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.automated.id
+    gateway_id = aws_internet_gateway.automated-igw.id
   }
 
    tags = {
@@ -82,8 +82,8 @@ resource "aws_eip" "auto_elb" {
 #https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/nat_gateway
 
 resource "aws_nat_gateway" "example" {
-  allocation_id = aws_eip.auto.id
-  subnet_id     = aws_subnet.main.id #public ip
+  allocation_id = aws_eip.auto_elb.id
+  subnet_id     = aws_subnet.public.id #public ip
 
   tags = {
     Name = "automated-NAT"
