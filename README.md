@@ -86,9 +86,10 @@ Desired Infra = Actual Infra
 # Remote State
 keeping terraform.tfstate in local is a problem,
 
-if you lose the data then terraform can't track what happened earlier. It will try to recreate again.
-In case of version control, keeping the terraform state in GitHub also causes problem while infra is creating through CICD. If multiple triggers to the pipeline then duplicate infra would be created.
-It is best practice to keep the state file in remote locations like S3 for better collaboration between team members.
+    if you lose the data then terraform can't track what happened earlier. It will try to recreate again.
+
+    In case of version control, keeping the terraform state in GitHub also causes problem while infra is creating through CICD. If multiple triggers to the pipeline then duplicate infra would be created.
+    It is best practice to keep the state file in remote locations like S3 for better collaboration between team members.
 Now where ever we run terraform apply it connects to S3 and avoid the situations of duplicate infra. We need to lock with dynamodb so that multiple persons can't apply at the same time.
 
 # Variables
@@ -127,6 +128,6 @@ We use variables.tf file to declare variables, we can place default values here.
 
 # Best Way:
 Create variables.tf and terraform.tfvars
-Place default values in variables.tf
-Override default values using terraform.tfvars. We usually don't commit terraform.tfvars into Git so that users can define their own values.
-Any variable can be overriden at run time using -var "key=value"
+    Place default values in variables.tf
+    Override default values using terraform.tfvars. We usually don't commit terraform.tfvars into Git so that users can define their own values.
+    Any variable can be overriden at run time using -var "key=value"
