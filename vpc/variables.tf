@@ -23,3 +23,23 @@ variable "private_subnets_cidr" {
 variable "tags" {
   type = map
 }
+
+variable "internet" {
+    type = bool 
+}
+
+variable "lb_type" {
+    type = string
+}
+
+variable "subents_ids" {
+    type = list
+}
+
+variable "security_groups" {
+    type = list
+}
+
+variable "timeout" {
+    type = number
+}
