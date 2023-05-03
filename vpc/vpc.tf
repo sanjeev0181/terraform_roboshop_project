@@ -1,12 +1,10 @@
 #https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc
 
 resource "aws_vpc" "main" {
-  cidr_block       = "10.0.0.0/16"
+  cidr_block       = var.cidr
   instance_tenancy = "default"
 
-  tags = {
-    Name = "automated-vpc"
-  }
+  tags = var.tags
 }
 
 #subents
@@ -14,20 +12,16 @@ resource "aws_vpc" "main" {
 
 resource "aws_subnet" "public" {
   vpc_id     = aws_vpc.main.id  #if will fetch VPCID created form above code.
-  cidr_block = "10.0.1.0/24"
+  cidr_block =  var.public_subnets_cidr #"10.0.1.0/24"
 
-  tags = {
-    Name = "public-subnets-automated-vpc"
-  }
+  tags = var.tags
 }
 
 resource "aws_subnet" "private" {
   vpc_id     = aws_vpc.main.id  #if will fetch VPCID created form above code.
-  cidr_block = "10.0.2.0/24"
+  cidr_block = var.private_subnets_cidr #"10.0.2.0/24"
 
-  tags = {
-    Name = "private-subnets-automated-vpc"
-  }
+  tags = var.tags
 }
 
 
@@ -37,9 +31,7 @@ resource "aws_subnet" "private" {
 resource "aws_internet_gateway" "automated-igw" {
   vpc_id = aws_vpc.main.id  #internet gateway depends of VPC
 
-  tags = {
-    Name = "automated-igw"
-  }
+  tags = var.tags
 }
 
 #Route Tables
@@ -53,9 +45,7 @@ resource "aws_route_table" "public-rt" {
     gateway_id = aws_internet_gateway.automated-igw.id
   }
 
-   tags = {
-    Name = "public-rt"
-  }
+   tags = var.tags
 }
 
 resource "aws_route_table" "private-rt" {  #for private route we don't attach IGW, we attach NAT
@@ -66,9 +56,7 @@ resource "aws_route_table" "private-rt" {  #for private route we don't attach IG
     gateway_id = aws_nat_gateway.example.id
   }
 
-   tags = {
-    Name = "private-rt"
-  }
+   tags = var.tags
 }
 
 #Elastic ip
@@ -83,11 +71,9 @@ resource "aws_eip" "auto_elb" {
 
 resource "aws_nat_gateway" "example" {
   allocation_id = aws_eip.auto_elb.id
-  subnet_id     = aws_subnet.public.id #public ip
+  subnet_id     = aws_subnet.public_subnets_cidr.id #public ip
 
-  tags = {
-    Name = "automated-NAT"
-  }
+  tags = var.tags
 
   # To ensure proper ordering, it is recommended to add an explicit dependency
   # on the Internet Gateway for the VPC.
@@ -98,11 +84,11 @@ resource "aws_nat_gateway" "example" {
 #https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association
 
 resource "aws_route_table_association" "public" {
-  subnet_id      = aws_subnet.public.id
+  subnet_id      = aws_subnet.public_subnets_cidr.id
   route_table_id = aws_route_table.public-rt.id
 }
 
 resource "aws_route_table_association" "private" {
-  subnet_id      = aws_subnet.private .id
+  subnet_id      = aws_subnet.private_subnets_cidr.id
   route_table_id = aws_route_table.private-rt.id
 }
