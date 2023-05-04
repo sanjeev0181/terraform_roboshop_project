@@ -12,6 +12,6 @@ resource "aws_instance" "wlidfly_web"{
   #     "bash wlidfly.sh",
   #   ]
   # }
-  user_data = "${file(bash wlidfly.sh)}"
+  user_data = "${file("bash wlidfly.sh")}"
 }
 
