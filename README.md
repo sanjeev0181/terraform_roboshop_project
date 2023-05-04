@@ -104,6 +104,7 @@ list
 map
 boolean
 
+```
 variable "region" {
   type = string
   default = "us-west-2"
@@ -126,6 +127,8 @@ variable "tags" {
     Environment = "dev"
   }
 }
+
+```
 We use variables.tf file to declare variables, we can place default values here. 
   * terraform.tfvars is the file we declare the default values. We can override variable values from command line using -var "key=value".
 
@@ -156,6 +159,7 @@ variables.tf file we need to keep all vriables
 # Outputs
 
 We are creating Infra, we want to see what are the outputs we can get through Infra. Syntax is
+ 
  ```
 output "name_you_prefer" {
 
@@ -163,3 +167,8 @@ output "name_you_prefer" {
 }
 
 ```
+
+# Data Sources
+Data source is useful to get the information from Cloud or any external provider. This information will be used as inputs for your infrastructure.
+
+``` 
