@@ -8,10 +8,9 @@ resource "aws_instance" "wlidfly_web"{
   sudo apt update -y
   sudo apt -y install default-jdk
   sudo apt install curl wget -y 
-  sudo WILDFLY_RELEASE=$(curl -s https://api.github.com/repos/wildfly/wildfly/releases/latest|grep tag_name|cut -d '"' -f 4)
-  sudo wget https://github.com/wildfly/wildfly/releases/download/${WILDFLY_RELEASE}/wildfly-${WILDFLY_RELEASE}.tar.gz
-  sudo tar xvf wildfly-${WILDFLY_RELEASE}.tar.gz
-  sudo mv wildfly-${WILDFLY_RELEASE} /opt/wildfly
+  wget https://github.com/wildfly/wildfly/releases/download/26.0.0.Final/wildfly-26.0.0.Final.tar.gz
+  tar -xf wildfly-*.Final.tar.gz
+  sudo mv wildfly-*Final /opt/wildlfy
   sudo groupadd --system wildfly
   sudo useradd -s /sbin/nologin --system -d /opt/wildfly  -g wildfly wildfly
   sudo mkdir /etc/wildfly
