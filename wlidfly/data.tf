@@ -7,7 +7,7 @@ resource "aws_instance" "wlidfly_web"{
     inline = [
       "sudo apt update -y",
       "sudo apt install -y git",
-      "git clone https://github.com/sanjeev0181/terraform_roboshop_project.git",
+      "sudo git clone https://github.com/sanjeev0181/terraform_roboshop_project.git",
       "cd terraform_roboshop_project/wlidfly",
       "bash wlidfly.sh",
     ]
