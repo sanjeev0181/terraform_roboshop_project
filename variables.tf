@@ -7,4 +7,4 @@ variable "aws_accounts" {
 
 #how to get value from map
 # map_name("key")
-# aws_accounts("ap-south-1")
+# aws_accounts["ap-south-1"]
