@@ -28,3 +28,4 @@ resource "aws_instance" "wlidfly_web"{
   ami = data.aws_ami.wliffly_ec2.image_id 
   instance_type = "t3.medium"
 }
+
