@@ -25,6 +25,6 @@ data "aws_ami" "wliffly_ec2" {
 
 resource "aws_instance" "wlidfly_web"{
   #ami = "ami-046b3d63c4fe1b3cf" #AMI ID will be different every region, this is OS
-  ami = data.aws_ami.wliffly_ec2.image_id 
+  ami = data.aws_ami.wliffly_ec2.id 
   instance_type = "t3.medium"
 }
