@@ -16,6 +16,10 @@ data "aws_ami" "wliffly_ec2" {
     name   = "virtualization-type"
     values = ["hvm"]
   }
+  filter {
+    name   = "architecture"
+    values = ["x86_64"]
+  }
 }
 
 
