@@ -77,6 +77,7 @@ Terraform is a declarative way of approach. Declarative means whatever you write
 Whenever terraform creates infra, it will create file called terraform.tfstate, it needs someway to track what it created, that is state file
 
 TF files = whatever we want = Desired infra
+
 terraform.tfstate = Actual Infra = current state of Infra
 
 Terraform responsibility is to maintain
@@ -86,11 +87,11 @@ Desired Infra = Actual Infra
 # Remote State
 keeping terraform.tfstate in local is a problem,
 
-    if you lose the data then terraform can't track what happened earlier. It will try to recreate again.
+  * if you lose the data then terraform can't track what happened earlier. It will try to recreate again.
 
-    In case of version control, keeping the terraform state in GitHub also causes problem while infra is creating through CICD. If multiple triggers to the pipeline then duplicate infra would be created.
-    It is best practice to keep the state file in remote locations like S3 for better collaboration between team members.
-Now where ever we run terraform apply it connects to S3 and avoid the situations of duplicate infra. We need to lock with dynamodb so that multiple persons can't apply at the same time.
+  * In case of version control, keeping the terraform state in GitHub also causes problem while infra is creating through CICD. If multiple triggers to the pipeline then duplicate infra would be created.
+  * It is best practice to keep the state file in remote locations like S3 for better collaboration between team members.
+  * Now where ever we run terraform apply it connects to S3 and avoid the situations of duplicate infra. We need to lock with dynamodb so that multiple persons can't apply at the same time.
 
 # Variables
 Variables are useful to define values that can be reused across many resources. A central place where a change of value can be reflected everywhere it is used.
@@ -102,6 +103,7 @@ number
 list
 map
 boolean
+
 variable "region" {
   type = string
   default = "us-west-2"
@@ -124,10 +126,40 @@ variable "tags" {
     Environment = "dev"
   }
 }
-We use variables.tf file to declare variables, we can place default values here. terraform.tfvars is the file we declare the default values. We can override variable values from command line using -var "key=value".
+We use variables.tf file to declare variables, we can place default values here. 
+  * terraform.tfvars is the file we declare the default values. We can override variable values from command line using -var "key=value".
 
 # Best Way:
 Create variables.tf and terraform.tfvars
-    Place default values in variables.tf
-    Override default values using terraform.tfvars. We usually don't commit terraform.tfvars into Git so that users can define their own values.
-    Any variable can be overriden at run time using -var "key=value"
+  * Place default values in variables.tf
+  * Override default values using terraform.tfvars. We usually don't commit terraform.tfvars into Git so that users can define their own values.
+  * Any variable can be overriden at run time using -var "key=value"
+
+
+# Variables
+
+* If you are repeating the values in multiple places, then you need to do the change in all
+places if there is a modication.
+
+* if we use variable change at single place reflect everywhere.
+* Keeping variables aside will save us from accidental change.
+
+variables.tf file we need to keep all vriables
+---
+
+#  https://learning-ocean.com/tutorials/terraform/terraform-pass-variable-from-cli
+#  https://developer.hashicorp.com/terraform/language/values/variables
+
+### Variables.tf --> Where you declare variables, you can keep default values as well.
+### terraform.tfvars --> here you can override default values.you should have your own variables,if you don't own values then default values in variables.tf will apply 
+
+# Outputs
+
+We are creating Infra, we want to see what are the outputs we can get through Infra. Syntax is
+ ```
+output "name_you_prefer" {
+
+    value = ""
+}
+
+```
