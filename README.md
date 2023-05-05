@@ -128,7 +128,7 @@ variable "tags" {
   }
 }
 
-```
+``` 
 We use variables.tf file to declare variables, we can place default values here. 
   * terraform.tfvars is the file we declare the default values. We can override variable values from command line using -var "key=value".
 
@@ -171,4 +171,5 @@ output "name_you_prefer" {
 # Data Sources
 Data source is useful to get the information from Cloud or any external provider. This information will be used as inputs for your infrastructure.
 
-``` 
+
+# Function
