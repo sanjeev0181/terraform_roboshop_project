@@ -54,7 +54,7 @@ resource "aws_instance" "windows_instance" {
 # Launch instance with Linux Server AMI
 resource "aws_instance" "linux_instance" {
   #ami           = "ami-0b7beba926e1f4233" # cloudimg-jboss-eap74-alma-linux8v1.0.0-88ddbac8-96ff-42cc-bf51-3fc704eaba4f
-  ami  = "ami-007855ac798b5175e"
+  #ami  = "ami-007855ac798b5175e"
   instance_type = "t2.micro"
    
   tags = {
