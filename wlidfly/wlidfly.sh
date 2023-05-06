@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -v
 sudo apt update -y
 sudo apt -y install default-jdk
 sudo apt install curl wget -y 
