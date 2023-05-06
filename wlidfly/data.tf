@@ -38,18 +38,18 @@
 
  
 # Launch instance with Windows Server AMI
-# resource "aws_instance" "windows_instance" {
-#   #ami           = "ami-0dfe34254aac43e0c" # cloudimg-wildfly26-windows-server2022v1.0.1-d1f39bc6-6cc7-49d7-9202-b13778c25d0c
-#   #ami  = "ami-0bde1eb2c18cb2abe"
-#   instance_type = "t2.micro"
+ resource "aws_instance" "windows_instance" {
+    ami           = "ami-0dfe34254aac43e0c" # cloudimg-wildfly26-windows-server2022v1.0.1-d1f39bc6-6cc7-49d7-9202-b13778c25d0c
+    #   #ami  = "ami-0bde1eb2c18cb2abe"
+    instance_type = "t2.micro"
   
-#   tags = {
-#     Name = "Win-Server-1"
-#   }
+    tags = {
+      Name = "Win-Server-1"
+    }
   
 #   # Other instance configuration parameters
 #   # ...
-# }
+ }
 
 # Launch instance with Linux Server AMI
 resource "aws_instance" "linux_instance" {
