@@ -1,0 +1,13 @@
+[Unit]
+Description=JBoss Application Server
+After=network.target
+
+[Service]
+User=jboss
+Group=jboss
+ExecStart=/opt/jboss/jboss-eap-8.0.0/bin/standalone.sh
+Restart=always
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target

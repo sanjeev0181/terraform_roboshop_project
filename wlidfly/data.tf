@@ -43,6 +43,7 @@
     ami  = "ami-0bde1eb2c18cb2abe"
     instance_type = "t2.medium"
     key_name = "ajith-keys"
+    count = 3
     tags = {
       Name = "Win-Server-1"
     }
@@ -57,6 +58,7 @@ resource "aws_instance" "linux_instance" {
   ami  = "ami-007855ac798b5175e"
   instance_type = "t2.medium"
   user_data = "${file("wlidfly.sh")}"
+  count = 3
   key_name = "ajith-keys"
    
   tags = {

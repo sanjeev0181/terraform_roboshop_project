@@ -173,3 +173,8 @@ Data source is useful to get the information from Cloud or any external provider
 
 
 # Function
+
+
+
+# count
+count.index is a special variable you will get if you use count parameter
