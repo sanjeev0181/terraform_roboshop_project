@@ -9,7 +9,7 @@ terraform {
   #https://developer.hashicorp.com/terraform/language/settings/backends/s3
   backend "s3" {
     bucket = "timing-remote"
-    key    = "timing"
+    key    = "timing01"
     region = "us-east-1"
     dynamodb_table = "timing-remote-dynamodb"
   }
