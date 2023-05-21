@@ -36,6 +36,12 @@ resource "aws_subnet" "private" {
   tags = var.private_subnets_tags
 }
 
+#DB Subnets
+resource "aws_subnet" "Database" {
+  vpc_id     = aws_vpc.main.id  #if will fetch VPCID created form above code.
+  cidr_block =  "172.0.3.0/24"
+  tags = var.db_subnets_tags
+}
 
 #Public Route tables
 
@@ -77,4 +83,15 @@ resource "aws_route_table" "private" {
   }
 
   tags = var.private_rt_tags
+}
+
+#aws_route_table_association
+resource "aws_route_table_association" "public" {
+  subnet_id      = aws_subnet.public.id
+  route_table_id = aws_route_table.public-rt.id
+}
+
+resource "aws_route_table_association" "private" {
+  subnet_id      = aws_subnet.private.id
+  route_table_id = aws_route_table.private-rt.id
 }

@@ -50,7 +50,15 @@ variable "nat_tags" {
 
 variable "private_rt_tags" {
     default = {
-        Name = "private-nat-timing"  
+        Name = "private-rt-timing"  
+        Environment = "DEV"
+        Terraform  = "true"
+    }
+}
+
+variable "db_subnets_tags" {
+    default = {
+        Name = "db-subnet-timing"  
         Environment = "DEV"
         Terraform  = "true"
     }

@@ -53,3 +53,10 @@ variable "private_rt_tags" {
     Name = "private-rt"
   }
 }
+
+variable "db_subnets_tags" {
+  type = map
+  default = {
+    Name = "db_subnets"
+  }
+}

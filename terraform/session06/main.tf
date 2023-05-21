@@ -8,4 +8,5 @@ module "vpc" {
   public_rt_tags = var.public_rt_tags
   nat_tags = var.nat_tags
   private_rt_tags = var.private_rt_tags
+  db_subnets_tags = var.db_subnets_tags
 }
