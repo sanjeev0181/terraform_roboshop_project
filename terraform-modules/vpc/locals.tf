@@ -1,3 +1,3 @@
-local {
-    cidr_block = "172.0.0.0/16"
+locals {
+    cidr = "172.0.0.0/16"
 }
