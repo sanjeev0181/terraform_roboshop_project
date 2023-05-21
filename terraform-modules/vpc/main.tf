@@ -1,5 +1,5 @@
 #this will create VPC
 resource "aws_vpc" "main" {
-   cidr_block = "10.0.0.0/16" 
+   cidr_block = var.cidr  # allowing other to overdire
    instance_tenancy = "default"
 }
