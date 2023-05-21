@@ -6,4 +6,5 @@ module "vpc" {
   public_subnets_tags = var.public_subnets_tags
   private_subnets_tags = var.private_subnets_tags
   public_rt_tags = var.public_rt_tags
+  nat_tags = var.nat_tags
 }

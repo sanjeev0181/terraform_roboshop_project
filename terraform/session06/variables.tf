@@ -32,7 +32,15 @@ variable "private_subnets_tags" {
 
 variable "public_rt_tags" {
     default = {
-        Name = "public_rt-timing"  #resourcename-projectname
+        Name = "public_rt-timing"  
+        Environment = "DEV"
+        Terraform  = "true"
+    }
+}
+
+variable "nat_tags" {
+    default = {
+        Name = "nat-timing"  
         Environment = "DEV"
         Terraform  = "true"
     }

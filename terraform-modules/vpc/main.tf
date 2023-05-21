@@ -48,3 +48,20 @@ resource "aws_route_table" "public-rt" {
   }
   tags =  var.public_rt_tags
 }
+
+#Elastic IP resource
+
+resource "aws_eip" "lb" {
+  
+}
+
+#NAT Gateway 
+resource "aws_nat_gateway" "example" {
+  allocation_id = aws_eip.example.id
+  subnet_id     = aws_subnet.example.id
+
+  tags = {
+    Name = "gw NAT"
+  }
+}
+

@@ -37,3 +37,10 @@ variable "public_rt_tags" {
     Name = "public_rt"
   }
 }
+
+variable "nat_tags" {
+  type = map
+  default = {
+    Name = "nat"
+  }
+}
