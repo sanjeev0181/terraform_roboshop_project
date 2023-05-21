@@ -19,5 +19,13 @@ resource "aws_internet_gateway" "igw" {
   tags = var.igw_tags
 }
 
+#public subnets
+
+resource "aws_subnet" "public" {
+  vpc_id     = aws_vpc.main.id  #if will fetch VPCID created form above code.
+  cidr_block =  "10.0.1.0/24"
+  tags = var.public_subnets_tags
+}
+
 
 #public Subnets

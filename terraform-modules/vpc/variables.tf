@@ -16,3 +16,10 @@ variable "igw_tags" {
     Name = "igw"
   }
 }
+
+variable "public_subnets_tags" {
+  type = map
+  default = {
+    Name = "public-subnets"
+  }
+}
