@@ -51,17 +51,17 @@ resource "aws_route_table" "public-rt" {
 
 #Elastic IP resource
 
-resource "aws_eip" "lb" {
+resource "aws_eip" "eip" {
   
 }
 
 #NAT Gateway 
-resource "aws_nat_gateway" "example" {
-  allocation_id = aws_eip.example.id
-  subnet_id     = aws_subnet.example.id
-
-  tags = {
-    Name = "gw NAT"
-  }
+resource "aws_nat_gateway" "nat" {
+  allocation_id = aws_eip.eip.id
+  subnet_id     = aws_subnet.public.id
+  tags = var. 
+  # To ensure proper ordering, it is recommended to add an explicit dependency
+  # on the Internet Gateway for the VPC.
+  depends_on = [aws_internet_gateway.igw]
 }
 
