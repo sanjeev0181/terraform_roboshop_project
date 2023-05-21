@@ -44,3 +44,12 @@ variable "nat_tags" {
     Name = "nat"
   }
 }
+
+#private_rt_tags
+
+variable "private_rt_tags" {
+  type = map
+  default = {
+    Name = "private-rt"
+  }
+}

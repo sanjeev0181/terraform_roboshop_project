@@ -45,3 +45,13 @@ variable "nat_tags" {
         Terraform  = "true"
     }
 }
+
+#private_rt_tags
+
+variable "private_rt_tags" {
+    default = {
+        Name = "private-nat-timing"  
+        Environment = "DEV"
+        Terraform  = "true"
+    }
+}
