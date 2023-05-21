@@ -5,3 +5,11 @@ variable "tags" {
         Terraform  = "true"
     }
 }
+
+variable "igw_tags" {
+    default = {
+        Name = "timing-igw"
+        Environment = "DEV"
+        Terraform  = "true"
+    }
+}
