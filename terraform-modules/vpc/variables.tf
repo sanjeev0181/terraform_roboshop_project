@@ -23,3 +23,10 @@ variable "public_subnets_tags" {
     Name = "public-subnets"
   }
 }
+
+variable "private_subnets_tags" {
+  type = map
+  default = {
+    Name = "private-subnets"
+  }
+}

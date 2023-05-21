@@ -8,7 +8,7 @@ variable "tags" {
 
 variable "igw_tags" {
     default = {
-        Name = "timing-igw"
+        Name = "timing-igw" #don't repeat resourceName itself.
         Environment = "DEV"
         Terraform  = "true"
     }
@@ -17,6 +17,14 @@ variable "igw_tags" {
 variable "public_subnets_tags" {
     default = {
         Name = "public_subnet-timing"  #resourcename-projectname
+        Environment = "DEV"
+        Terraform  = "true"
+    }
+}
+
+variable "private_subnets_tags" {
+    default = {
+        Name = "private_subnet-timing"  #resourcename-projectname
         Environment = "DEV"
         Terraform  = "true"
     }

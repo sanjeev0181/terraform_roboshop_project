@@ -4,4 +4,5 @@ module "vpc" {
   tags = var.tags
   igw_tags = var.igw_tags
   public_subnets_tags = var.public_subnets_tags
+  private_subnets_tags = var.private_subnets_tags
 }

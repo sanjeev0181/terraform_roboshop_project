@@ -28,4 +28,10 @@ resource "aws_subnet" "public" {
 }
 
 
-#public Subnets
+#private Subnets
+
+resource "aws_subnet" "private" {
+  vpc_id     = aws_vpc.main.id  #if will fetch VPCID created form above code.
+  cidr_block =  "10.0.2.0/24"
+  tags = var.private_subnets_tags
+}
