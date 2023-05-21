@@ -74,7 +74,7 @@ resource "aws_nat_gateway" "nat" {
 
 #private Route tables
 
-resource "aws_route_table" "private" {
+resource "aws_route_table" "private-rt" {
   vpc_id = aws_vpc.main.id
 
   route {
