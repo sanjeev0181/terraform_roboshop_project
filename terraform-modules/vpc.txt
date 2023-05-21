@@ -12,3 +12,18 @@ Variables
 security group
 ----------
 You dont want users to overdire...
+
+
+VPC
+----
+Public Subnet  --> Web tier resources
+private Subnet --> App tier resources
+Database Subnet --> DB related resources
+
+
+public route table  -->  public subnet
+private route table -->  private and database subnet
+
+Internet gateway
+NAT
+Routes

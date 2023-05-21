@@ -9,3 +9,10 @@ variable "tags" {
         Name = "VPC"
     }
 }
+
+variable "igw_tags" {
+  type = map
+  default = {
+    Name = "igw"
+  }
+}

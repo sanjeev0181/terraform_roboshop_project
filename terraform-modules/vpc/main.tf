@@ -10,3 +10,14 @@ resource "aws_vpc" "main" {
   instance_tenancy = "default"
   tags = var.tags
 }
+
+
+#Nat gateway
+
+resource "aws_nat_gateway" "igw" {
+  vpc_id = aws_vpc.main.id # internet gateway depends on VPC
+  tags = var.igw_tags
+}
+
+
+#public Subnets
