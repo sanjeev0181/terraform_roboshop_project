@@ -15,7 +15,7 @@ resource "aws_vpc" "main" {
 #Nat gateway
 
 resource "aws_nat_gateway" "igw" {
-  vpc_id = aws_vpc.main.id # internet gateway depends on VPC
+  vpc_id = aws_vpc.main.id  # internet gateway depends on VPC
   tags = var.igw_tags
 }
 
