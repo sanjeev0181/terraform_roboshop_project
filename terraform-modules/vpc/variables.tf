@@ -1,4 +1,4 @@
 variable "cidr" {
-  type = "string"
+  type = string
   default = "192.0.0.0/16"
 }
