@@ -13,3 +13,11 @@ variable "igw_tags" {
         Terraform  = "true"
     }
 }
+
+variable "public_subnets_tags" {
+    default = {
+        Name = "public_subnet-timing"  #resourcename-projectname
+        Environment = "DEV"
+        Terraform  = "true"
+    }
+}
